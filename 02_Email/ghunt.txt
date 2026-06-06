@@ -1,0 +1,43 @@
+╔══════════════════════════════════════════════╗
+║   GHUNT — OSINT sur compte Google           ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+GHunt extrait des informations depuis un compte Google
+à partir d'une adresse Gmail :
+- Nom complet, photo de profil
+- Services Google utilisés (Maps, YouTube, Drive...)
+- Dernière activité, avis Google Maps
+- Applications Android utilisées
+- Calendrier public si disponible
+
+INSTALLATION
+────────────
+pipx install ghunt
+
+# Première utilisation : authentification requise
+ghunt login
+→ Suivre les instructions pour connecter un compte Google
+  (utilise un compte Google "sacrifié", pas ton compte principal)
+
+COMMANDES
+─────────
+# Recherche sur une adresse Gmail
+ghunt email john.doe@gmail.com
+
+# Recherche sur un Google ID
+ghunt gaia 123456789
+
+# Recherche sur une URL Google Maps
+ghunt drive <url>
+
+EXEMPLE
+───────
+ghunt email target@gmail.com
+
+IMPORTANT
+─────────
+Nécessite un cookie Google valide (via ghunt login).
+Utiliser un faux compte Google pour ne pas exposer
+votre identité lors de la recherche.

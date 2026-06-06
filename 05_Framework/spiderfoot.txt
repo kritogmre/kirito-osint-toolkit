@@ -1,0 +1,50 @@
+╔══════════════════════════════════════════════╗
+║   SPIDERFOOT — Framework OSINT avec UI web  ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+SpiderFoot automatise la collecte OSINT sur :
+une adresse IP, un domaine, une adresse email,
+un nom, un numéro de téléphone, ou un subnet.
+Il utilise + de 200 modules et affiche les résultats
+dans une interface web visuelle avec graphe de liens.
+
+INSTALLATION
+────────────
+cd ~ && git clone https://github.com/smicallef/spiderfoot.git
+cd ~/spiderfoot
+pip3 install -r requirements.txt --break-system-packages
+
+DÉMARRAGE
+─────────
+# Lancer l'interface web (port 5001)
+cd ~/spiderfoot && python3 sf.py -l 127.0.0.1:5001
+
+# Puis ouvrir dans le navigateur Windows :
+# http://localhost:5001
+
+UTILISATION (interface web)
+────────────────────────────
+1. Aller sur http://localhost:5001
+2. Cliquer "New Scan"
+3. Entrer la cible (domaine, IP, email, nom...)
+4. Choisir le type de scan :
+   - "All" → tout scanner (long)
+   - "Footprint" → reconnaissance générale
+   - "Investigate" → investigation ciblée
+   - "Passive" → uniquement sources passives (discret)
+5. Lancer et voir les résultats en temps réel
+
+MODULES CLÉS
+────────────
+- sfp_dnsraw       : résolution DNS
+- sfp_shodan       : recherche Shodan
+- sfp_whois        : infos WHOIS
+- sfp_email        : collecte emails
+- sfp_socialmedia  : profils réseaux sociaux
+- sfp_breach       : vérification dans des leaks
+
+COMMANDE LIGNE (sans UI)
+────────────────────────
+python3 sf.py -s exemple.com -t INTERNET_NAME -m sfp_dnsraw,sfp_whois

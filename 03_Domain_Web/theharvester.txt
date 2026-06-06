@@ -1,0 +1,49 @@
+╔══════════════════════════════════════════════╗
+║   theHARVESTER — Recon domaines/emails      ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+theHarvester collecte des informations publiques sur un domaine :
+- Adresses email associées
+- Sous-domaines
+- Adresses IP
+- URLs exposées
+Utilise des sources comme Google, Bing, LinkedIn,
+Shodan, VirusTotal, etc.
+
+INSTALLATION
+────────────
+pipx install theHarvester
+
+COMMANDES
+─────────
+# Recherche basique (source Google)
+theHarvester -d exemple.com -b google
+
+# Toutes les sources disponibles
+theHarvester -d exemple.com -b all
+
+# Limiter le nombre de résultats
+theHarvester -d exemple.com -b google -l 200
+
+# Export HTML
+theHarvester -d exemple.com -b all -f rapport.html
+
+# Sources utiles
+theHarvester -d exemple.com -b bing,linkedin,dnsdumpster
+
+SOURCES DISPONIBLES
+───────────────────
+google, bing, linkedin, twitter, shodan,
+virustotal, dnsdumpster, crtsh, anubis...
+
+EXEMPLE
+───────
+theHarvester -d entreprise.com -b all -f rapport_entreprise
+
+RÉSULTATS
+─────────
+- Liste d'emails : prenom.nom@entreprise.com
+- Sous-domaines : mail.entreprise.com, vpn.entreprise.com
+- IPs associées au domaine

@@ -1,0 +1,47 @@
+╔══════════════════════════════════════════════╗
+║   MAIGRET — Username OSINT avancé           ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+Version plus puissante que Sherlock.
+Cherche sur + de 3000 sites, extrait automatiquement
+des infos supplémentaires depuis les profils trouvés
+(bio, localisation, autres pseudos liés, etc.)
+Génère un rapport HTML visuel.
+
+INSTALLATION
+────────────
+pipx install maigret
+
+COMMANDES
+─────────
+# Recherche simple
+maigret nomutilisateur
+
+# Rapport HTML complet (très utile)
+maigret nomutilisateur --html
+
+# Rapport PDF
+maigret nomutilisateur --pdf
+
+# Limiter le nombre de sites (plus rapide)
+maigret nomutilisateur --top-sites 500
+
+# Recherche sur un site spécifique
+maigret nomutilisateur -s twitter
+
+# Plusieurs pseudos
+maigret nom1 nom2
+
+EXEMPLE
+───────
+maigret johndoe --html --top-sites 1000
+
+→ Génère un fichier reports/johndoe.html avec
+  une carte visuelle des profils trouvés
+
+AVANTAGE SUR SHERLOCK
+─────────────────────
+Maigret suit les liens entre profils et peut
+découvrir d'autres pseudos utilisés par la même personne.

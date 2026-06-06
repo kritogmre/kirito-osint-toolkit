@@ -1,0 +1,64 @@
+╔══════════════════════════════════════════════╗
+║   IP OSINT — Reconnaissance d'adresses IP   ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+Outils pour investiguer une adresse IP :
+géolocalisation, FAI, ports ouverts, réputation,
+domaines hébergés, historique...
+
+OUTILS EN LIGNE DE COMMANDE (WSL)
+───────────────────────────────────
+
+1. WHOIS — Informations sur l'IP/domaine
+───────────────────────────────────────
+sudo apt install whois -y
+whois 8.8.8.8
+whois exemple.com
+
+2. NSLOOKUP / DIG — DNS
+───────────────────────
+nslookup exemple.com
+dig exemple.com
+dig -x 8.8.8.8       ← reverse DNS
+
+3. CURL ipinfo.io — Géolocalisation rapide
+──────────────────────────────────────────
+curl ipinfo.io/8.8.8.8
+→ Affiche : pays, ville, FAI, ASN, coordonnées
+
+curl ipapi.co/8.8.8.8/json
+→ Infos détaillées en JSON
+
+4. NMAP — Scan de ports
+───────────────────────
+sudo apt install nmap -y
+
+# Scan basique
+nmap 192.168.1.1
+
+# Scan des ports courants
+nmap -F exemple.com
+
+# Détection OS et services
+nmap -sV -O exemple.com
+
+# Scan discret (SYN scan)
+sudo nmap -sS exemple.com
+
+SITES OSINT IP À UTILISER DEPUIS LE NAVIGATEUR
+────────────────────────────────────────────────
+- https://www.shodan.io         → ports, services, vulnérabilités
+- https://censys.io             → inventaire internet
+- https://ipinfo.io/[IP]        → géoloc, FAI, ASN
+- https://www.virustotal.com    → réputation, malware
+- https://abuseipdb.com         → IP blacklistées
+- https://bgp.he.net            → routes BGP, ASN
+
+COMMANDE TOUT-EN-UN
+────────────────────
+# Résumé rapide d'une IP
+echo "=== WHOIS ===" && whois 8.8.8.8 | head -20
+echo "=== GEO ===" && curl -s ipinfo.io/8.8.8.8
+echo "=== DNS ===" && dig -x 8.8.8.8 +short

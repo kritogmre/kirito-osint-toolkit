@@ -1,0 +1,40 @@
+╔══════════════════════════════════════════════╗
+║   SHERLOCK — Recherche de pseudo            ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+Sherlock cherche un nom d'utilisateur sur + de 400 sites
+(Twitter, Instagram, GitHub, Reddit, TikTok, etc.)
+et affiche chaque profil trouvé avec son URL.
+
+INSTALLATION
+────────────
+pipx install sherlock-project
+
+COMMANDES
+─────────
+# Recherche simple
+sherlock nomutilisateur
+
+# Plusieurs pseudos en même temps
+sherlock nom1 nom2 nom3
+
+# Sauvegarder les résultats dans un fichier
+sherlock nomutilisateur --output resultats.txt
+
+# Seulement les profils trouvés (pas les 404)
+sherlock nomutilisateur --print-found
+
+# Ignorer les timeouts (plus rapide)
+sherlock nomutilisateur --timeout 5
+
+EXEMPLE
+───────
+sherlock johndoe --print-found --output johndoe_results.txt
+
+RÉSULTATS
+─────────
+[+] Site trouvé → URL du profil
+[-] Site non trouvé
+[!] Erreur / timeout

@@ -1,0 +1,52 @@
+╔══════════════════════════════════════════════╗
+║   EXIFTOOL — Extraction de métadonnées      ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+ExifTool lit les métadonnées cachées dans les fichiers :
+PHOTOS → GPS (coordonnées exactes !), appareil photo,
+         date/heure, logiciel utilisé, auteur
+DOCUMENTS PDF/Word → Auteur, entreprise, logiciel,
+                     date de création, nom d'utilisateur Windows
+VIDÉOS → Appareil, localisation, logiciel d'édition
+
+INSTALLATION
+────────────
+sudo apt install exiftool -y     ← déjà dans install_wsl.sh
+
+COMMANDES
+─────────
+# Voir toutes les métadonnées d'un fichier
+exiftool photo.jpg
+
+# Extraire uniquement les coordonnées GPS
+exiftool -gps:all photo.jpg
+
+# Extraire l'auteur d'un PDF
+exiftool -author document.pdf
+
+# Analyser tous les fichiers d'un dossier
+exiftool /chemin/dossier/
+
+# Supprimer TOUTES les métadonnées d'une image (anonymiser)
+exiftool -all= photo.jpg
+
+# Exporter en JSON
+exiftool -json photo.jpg
+
+# Chercher dans plusieurs formats
+exiftool *.jpg *.pdf *.docx
+
+EXEMPLE PRATIQUE
+────────────────
+Une photo postée en ligne peut contenir :
+  GPS Position : 48° 51' 30.00" N, 2° 21' 0.00" E
+  → Coordonnées exactes de là où la photo a été prise !
+
+exiftool photo.jpg | grep -i "gps\|location\|author\|creator"
+
+FORMATS SUPPORTÉS
+─────────────────
+JPG, PNG, HEIC, RAW, PDF, Word, Excel, MP4, MOV,
+et + de 200 autres formats.

@@ -1,0 +1,41 @@
+╔══════════════════════════════════════════════╗
+║   HOLEHE — OSINT sur adresse email          ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+Holehe vérifie si une adresse email est enregistrée
+sur + de 120 sites (Instagram, Twitter, Adobe, Spotify,
+GitHub, Netflix, PayPal, etc.) sans envoyer de mail
+et sans alerter la cible.
+
+INSTALLATION
+────────────
+pipx install holehe
+
+COMMANDES
+─────────
+# Recherche sur une adresse
+holehe email@exemple.com
+
+# Sauvegarder les résultats
+holehe email@exemple.com | tee resultats.txt
+
+# Format plus propre (seulement les sites trouvés)
+holehe email@exemple.com --only-used
+
+EXEMPLE
+───────
+holehe john.doe@gmail.com --only-used
+
+RÉSULTATS
+─────────
+[+] Site → email utilisé sur ce site
+[-] Site → email non enregistré
+[!] Erreur de vérification
+
+UTILITÉ
+───────
+Permet de savoir quels services une personne utilise
+à partir de son adresse email uniquement.
+Très utile pour construire un profil numérique.

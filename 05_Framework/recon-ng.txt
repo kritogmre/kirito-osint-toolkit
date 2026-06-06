@@ -1,0 +1,62 @@
+╔══════════════════════════════════════════════╗
+║   RECON-NG — Framework de reconnaissance    ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+Recon-ng est un framework modulaire (style Metasploit)
+dédié à l'OSINT. Il centralise les résultats dans une
+base de données et enchaîne les modules pour enrichir
+progressivement un profil (domaine → emails → profils → IPs).
+
+INSTALLATION
+────────────
+pipx install recon-ng
+
+DÉMARRAGE
+─────────
+recon-ng
+
+COMMANDES DE BASE (dans le shell recon-ng)
+──────────────────────────────────────────
+# Créer un workspace (projet)
+workspaces create monprojet
+
+# Installer des modules
+marketplace install all
+
+# Lister les modules disponibles
+modules search
+
+# Charger un module
+modules load recon/domains-hosts/hackertarget
+
+# Voir les options du module
+info
+
+# Définir la cible
+options set SOURCE exemple.com
+
+# Lancer le module
+run
+
+# Voir les résultats en base
+show hosts
+show contacts
+show domains
+
+MODULES UTILES
+──────────────
+recon/domains-hosts/hackertarget     → sous-domaines
+recon/domains-contacts/whois_pocs    → contacts WHOIS
+recon/hosts-hosts/resolve            → résolution DNS
+recon/profiles-profiles/twitter      → profils Twitter
+reporting/html                        → rapport final HTML
+
+WORKFLOW TYPIQUE
+────────────────
+1. workspaces create cible
+2. modules load recon/domains-hosts/hackertarget
+3. options set SOURCE cible.com → run
+4. modules load recon/domains-contacts/whois_pocs → run
+5. reporting/html → rapport complet

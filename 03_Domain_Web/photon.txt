@@ -1,0 +1,48 @@
+╔══════════════════════════════════════════════╗
+║   PHOTON — Crawler web OSINT                ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+Photon crawle un site web et extrait automatiquement :
+- Toutes les URLs internes et externes
+- Adresses email trouvées
+- Numéros de téléphone
+- Clés et tokens (AWS, API keys...)
+- Fichiers (PDF, DOC, ZIP...)
+- Sous-domaines mentionnés
+- Comptes de réseaux sociaux
+
+INSTALLATION
+────────────
+git clone https://github.com/s0md3v/Photon.git ~/Photon
+cd ~/Photon && pip3 install -r requirements.txt --break-system-packages
+
+COMMANDES
+─────────
+# Crawl basique
+python3 ~/Photon/photon.py -u https://exemple.com
+
+# Crawl en profondeur (niveau 3)
+python3 ~/Photon/photon.py -u https://exemple.com -l 3
+
+# Sauvegarder les résultats dans un dossier
+python3 ~/Photon/photon.py -u https://exemple.com -o ./resultats
+
+# Crawler avec délai (pour éviter les bans)
+python3 ~/Photon/photon.py -u https://exemple.com --delay 2
+
+# Exporter uniquement les emails
+python3 ~/Photon/photon.py -u https://exemple.com | grep "@"
+
+EXEMPLE
+───────
+python3 ~/Photon/photon.py -u https://entreprise.com -l 2 -o ./crawl_entreprise
+
+RÉSULTATS (dans le dossier de sortie)
+──────────────────────────────────────
+- urls.txt      : toutes les URLs trouvées
+- external.txt  : liens externes
+- emails.txt    : adresses email
+- files.txt     : fichiers accessibles
+- intel.txt     : clés, tokens, données sensibles

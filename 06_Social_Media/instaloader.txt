@@ -1,0 +1,58 @@
+╔══════════════════════════════════════════════╗
+║   INSTALOADER — OSINT Instagram             ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+Instaloader télécharge et analyse des profils Instagram :
+- Posts, stories, highlights, reels
+- Métadonnées (date, lieu, hashtags, mentions)
+- Abonnés / abonnements
+- Photos de profil (historique)
+- Commentaires et likes
+
+INSTALLATION
+────────────
+pipx install instaloader
+
+COMMANDES
+─────────
+# Télécharger le profil public complet
+instaloader nomutilisateur
+
+# Sans télécharger les images (juste les métadonnées)
+instaloader --no-pictures nomutilisateur
+
+# Télécharger les followers (nécessite connexion)
+instaloader --login TON_COMPTE --followers nomutilisateur
+
+# Télécharger les abonnements
+instaloader --login TON_COMPTE --followees nomutilisateur
+
+# Sauvegarder dans un dossier spécifique
+instaloader --dirname-pattern ./resultats/{profile} nomutilisateur
+
+# Plusieurs profils
+instaloader profil1 profil2 profil3
+
+# Télécharger les stories (connexion requise)
+instaloader --login TON_COMPTE :stories
+
+# Profil privé (si tu le suis)
+instaloader --login TON_COMPTE profil_prive
+
+EXEMPLE
+───────
+instaloader --no-pictures target_username
+
+RÉSULTATS
+─────────
+Crée un dossier avec :
+- Posts.json → toutes les métadonnées
+- profile.json → infos du profil
+- Photos si téléchargées
+
+NOTE
+────
+Pour les comptes privés ou les followers/following,
+utilise un compte Instagram "sacrifié", pas le tien.

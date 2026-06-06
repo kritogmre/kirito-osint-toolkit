@@ -1,0 +1,46 @@
+╔══════════════════════════════════════════════╗
+║   PHONEINFOGA — OSINT numéros de téléphone  ║
+╚══════════════════════════════════════════════╝
+
+DESCRIPTION
+───────────
+PhoneInfoga collecte des informations sur un numéro :
+- Pays, opérateur, région
+- Type de ligne (mobile, fixe, VOIP)
+- Recherches sur Google, Numverify, etc.
+- Interface web disponible
+
+INSTALLATION
+────────────
+# Télécharger le binaire
+curl -sSL https://raw.githubusercontent.com/sundowndev/phoneinfoga/master/support/scripts/install | bash
+sudo mv ./phoneinfoga /usr/local/bin/
+
+COMMANDES
+─────────
+# Scan basique (toujours mettre le + et l'indicatif pays)
+phoneinfoga scan -n +33612345678
+
+# Interface web
+phoneinfoga serve -p 8080
+# Puis ouvrir http://localhost:8080
+
+# Scan avec sortie JSON
+phoneinfoga scan -n +33612345678 -o json
+
+EXEMPLE
+───────
+phoneinfoga scan -n +33601020304
+
+FORMAT DES NUMÉROS
+──────────────────
+France    : +33612345678
+Belgique  : +32412345678
+Suisse    : +41791234567
+USA       : +12025551234
+
+RÉSULTATS
+─────────
+- Pays et opérateur d'origine
+- Type de numéro
+- Liens vers recherches Google automatiques
